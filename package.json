@@ -1,0 +1,24 @@
+{
+    "name": "fabric.baseos",
+    "version": "1.0.0",
+    "description": "docker to run healthcare.ai",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "docker-build": "docker build -t fabric.baseos .",
+        "docker-stop": "docker stop fabric.baseos || echo 'no container to stop'",
+        "docker-remove": "docker rm fabric.baseos || echo 'no container to remove'",
+        "docker": "npm run docker-stop && npm run docker-remove && npm run docker-build && docker run -d -p 8080:8080 --name fabric.baseos fabric.baseos",
+        "docker-publish": "docker build -t imranq2/fabric.baseos . && docker push imranq2/fabric.baseos"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/imranq2/noderestserver.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/imranq2/noderestserver/issues"
+    },
+    "homepage": "https://github.com/imranq2/noderestserver#readme"
+}
