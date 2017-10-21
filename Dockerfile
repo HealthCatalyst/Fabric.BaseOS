@@ -28,10 +28,10 @@ ADD https://healthcatalyst.github.io/InstallScripts/wait-for-it.sh /tmp/wait-for
 
 RUN dos2unix /tmp/replaceconfig.sh \
     && chmod +x /tmp/replaceconfig.sh \
-    && cp /tmp/replaceconfig.sh /usr/local/bin/replaceconfig.sh \
+    && cp /tmp/replaceconfig.sh /usr/local/bin/replaceconfig \
 	&& dos2unix /tmp/wait-for-it.sh \
     && chmod +x /tmp/wait-for-it.sh \
-    && cp /tmp/wait-for-it.sh /usr/local/bin/wait-for-it.sh \
+    && cp /tmp/wait-for-it.sh /usr/local/bin/wait-for-it \
 	&& dos2unix /opt/install/setupkeytab.sh \
     && chmod +x /opt/install/setupkeytab.sh \
 	&& dos2unix /opt/install/signintoactivedirectory.sh \
