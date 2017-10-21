@@ -1,5 +1,7 @@
 FROM centos:centos7
-MAINTAINER Health Catalyst <imran.qureshi@healthcatalyst.com>
+
+LABEL maintainer="Health Catalyst"
+LABEL version="1.0"
 
 ## Set a default user. Available via runtime flag `--user docker` 
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
@@ -20,4 +22,18 @@ RUN yum -y install authconfig krb5-workstation pam_krb5 samba-common oddjob-mkho
 # add script to create keytab file for kerberos authentication with Active Directory
 ADD https://imranq2.github.io/InstallScripts/setupkeytab.txt /opt/install/setupkeytab.sh
 ADD https://imranq2.github.io/InstallScripts/signintoactivedirectory.txt /opt/install/signintoactivedirectory.sh
+
+ADD https://healthcatalyst.github.io/InstallScripts/replaceconfig.txt /tmp/replaceconfig.sh
+ADD https://healthcatalyst.github.io/InstallScripts/wait-for-it.sh /tmp/wait-for-it.sh
+
+RUN dos2unix /tmp/replaceconfig.sh \
+    && chmod +x /tmp/replaceconfig.sh \
+    && cp /tmp/replaceconfig.sh /usr/local/bin/replaceconfig.sh \
+	&& dos2unix /tmp/wait-for-it.sh \
+    && chmod +x /tmp/wait-for-it.sh \
+    && cp /tmp/wait-for-it.sh /usr/local/bin/wait-for-it.sh \
+	&& dos2unix /opt/install/setupkeytab.sh \
+    && chmod +x /opt/install/setupkeytab.sh \
+	&& dos2unix /opt/install/signintoactivedirectory.sh \
+    && chmod +x /opt/install/signintoactivedirectory.sh	
 
