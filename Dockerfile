@@ -14,7 +14,7 @@ RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
 
 # install packages for authentication with Active Directory
-RUN yum -y install authconfig krb5-workstation pam_krb5 samba-common oddjob-mkhomedir sudo ntp; yum clean all
+RUN yum -y install authconfig krb5-workstation krb5-libs pam_krb5 rsync dos2unix samba-common oddjob-mkhomedir sudo ntp; yum clean all
 
 # create /opt/install folder
 # RUN mkdir -p /opt/install/
