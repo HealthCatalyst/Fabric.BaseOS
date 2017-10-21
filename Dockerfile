@@ -20,8 +20,8 @@ RUN yum -y install authconfig krb5-workstation krb5-libs pam_krb5 rsync dos2unix
 # RUN mkdir -p /opt/install/
 
 # add script to create keytab file for kerberos authentication with Active Directory
-ADD https://imranq2.github.io/InstallScripts/setupkeytab.txt /opt/install/setupkeytab.sh
-ADD https://imranq2.github.io/InstallScripts/signintoactivedirectory.txt /opt/install/signintoactivedirectory.sh
+ADD https://healthcatalyst.github.io/InstallScripts/setupkeytab.txt /opt/install/setupkeytab.sh
+ADD https://healthcatalyst.github.io/InstallScripts/signintoactivedirectory.txt /opt/install/signintoactivedirectory.sh
 
 ADD https://healthcatalyst.github.io/InstallScripts/replaceconfig.txt /tmp/replaceconfig.sh
 ADD https://healthcatalyst.github.io/InstallScripts/wait-for-it.sh /tmp/wait-for-it.sh
